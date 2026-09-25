@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Weekly Announcements &middot; Smithfield West Stake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&display=swap">
+
+<style>
+  :root {
+    --paper:#FAF7F1; --surface:#FFFFFF; --ink:#16243A; --body:#3A4453; --muted:#6E7383;
+    --rule:#E3DCCF; --accent:#8C6B33; --accent-soft:#F3EBDC;
+    --band-general:#1F3050; --band-relief:#6E4F2A; --band-eq:#5B3540; --band-youth:#3E5647;
+    --band-text:#FDFBF7;
+    --shadow:0 1px 2px rgba(22,36,58,.06), 0 8px 24px rgba(22,36,58,.07);
+    --measure:62ch; --gutter:20px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:#15171B; --surface:#1C1F25; --ink:#EDE7DC; --body:#C3C8D1; --muted:#8F959F;
+      --rule:#333841; --accent:#D3AC68; --accent-soft:#2A2620;
+      --band-general:#22344F; --band-relief:#5C4326; --band-eq:#4D2E37; --band-youth:#33493D;
+      --band-text:#F2EDE4;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:#15171B; --surface:#1C1F25; --ink:#EDE7DC; --body:#C3C8D1; --muted:#8F959F;
+    --rule:#333841; --accent:#D3AC68; --accent-soft:#2A2620;
+    --band-general:#22344F; --band-relief:#5C4326; --band-eq:#4D2E37; --band-youth:#33493D;
+    --band-text:#F2EDE4;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing:border-box; }
+  body {
+    margin:0; background:var(--paper); color:var(--body);
+    font-family:"Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap { max-width:960px; margin-inline:auto; padding-inline:var(--gutter); }
+  a { color:var(--accent); }
+  a:focus-visible, button:focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:3px; }
+
+  .masthead { background:var(--surface); border-bottom:1px solid var(--rule); }
+  .masthead__inner { max-width:960px; margin-inline:auto; padding-inline:var(--gutter); padding-block:42px 30px; text-align:center; }
+  .eyebrow { font-size:12px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); margin:0 0 14px; }
+  .masthead h1 { font-family:"Newsreader", Georgia, serif; font-weight:500; font-size:clamp(2.1rem,7vw,3.4rem); line-height:1.08; color:var(--ink); margin:0; text-wrap:balance; }
+  .masthead__week { margin:16px 0 0; font-size:14px; color:var(--muted); }
+
+  .upcoming { background:var(--surface); border-bottom:1px solid var(--rule); padding-block:30px 34px; }
+  .upcoming__head { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 14px; margin-bottom:16px; padding-bottom:13px; border-bottom:2px solid var(--accent); }
+  .upcoming h2 { font-family:"Newsreader", Georgia, serif; font-weight:600; font-size:clamp(1.35rem,4.2vw,1.75rem); line-height:1.2; color:var(--ink); margin:0; }
+  .agenda { display:grid; gap:2px; }
+  .agenda__row { display:grid; grid-template-columns:78px minmax(0,1fr); gap:16px; align-items:baseline; padding:11px 0 11px 14px; border-left:3px solid var(--rule); }
+  @media (max-width:480px){ .agenda__row { grid-template-columns:minmax(0,1fr); gap:2px; } }
+  .agenda__row[data-g="general"]{ border-left-color:var(--band-general); }
+  .agenda__row[data-g="relief"] { border-left-color:var(--band-relief); }
+  .agenda__row[data-g="eq"]     { border-left-color:var(--band-eq); }
+  .agenda__row[data-g="youth"]  { border-left-color:var(--band-youth); }
+  .agenda__date { font-size:13px; font-weight:700; color:var(--ink); font-variant-numeric:tabular-nums; }
+  .agenda__date .dow { display:block; font-size:10.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+  @media (max-width:480px){ .agenda__date{ display:flex; gap:8px; align-items:baseline; } .agenda__date .dow{ display:inline; } }
+  .agenda__title { margin:0; font-size:15.5px; font-weight:600; color:var(--ink); line-height:1.35; }
+  .agenda__meta { margin:2px 0 0; font-size:13.5px; color:var(--muted); }
+  .agenda__group { font-size:10.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+  .agenda__row[data-g="general"] .agenda__group{ color:var(--band-general); }
+  .agenda__row[data-g="relief"]  .agenda__group{ color:var(--band-relief); }
+  .agenda__row[data-g="eq"]      .agenda__group{ color:var(--band-eq); }
+  .agenda__row[data-g="youth"]   .agenda__group{ color:var(--band-youth); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .agenda__row[data-g="general"] .agenda__group{ color:#8FAACE; }
+    :root:not([data-theme="light"]) .agenda__row[data-g="relief"]  .agenda__group{ color:#C79A5E; }
+    :root:not([data-theme="light"]) .agenda__row[data-g="eq"]      .agenda__group{ color:#C98A97; }
+    :root:not([data-theme="light"]) .agenda__row[data-g="youth"]   .agenda__group{ color:#8CC3A3; }
+  }
+  :root[data-theme="dark"] .agenda__row[data-g="general"] .agenda__group{ color:#8FAACE; }
+  :root[data-theme="dark"] .agenda__row[data-g="relief"]  .agenda__group{ color:#C79A5E; }
+  :root[data-theme="dark"] .agenda__row[data-g="eq"]      .agenda__group{ color:#C98A97; }
+  :root[data-theme="dark"] .agenda__row[data-g="youth"]   .agenda__group{ color:#8CC3A3; }
+  .agenda__subhead:first-child { margin-top:2px; }
+  .agenda__subhead { margin:20px 0 6px; font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+  .agenda__empty { margin:4px 0 0; font-size:14.5px; color:var(--muted); font-style:italic; }
+
+  .band { color:var(--band-text); padding-block:24px; }
+  .band--general{ background:var(--band-general); }
+  .band--relief { background:var(--band-relief); }
+  .band--eq     { background:var(--band-eq); }
+  .band--youth  { background:var(--band-youth); }
+  .band h2 { font-family:"Newsreader", Georgia, serif; font-weight:500; font-size:clamp(1.45rem,4.4vw,2rem); line-height:1.2; margin:0; color:var(--band-text); text-wrap:balance; }
+  .band p { margin:6px 0 0; font-size:13.5px; opacity:.82; }
+
+  .events { padding-block:8px 40px; display:flex; flex-direction:column; }
+  .event { display:grid; grid-template-columns:minmax(0,1fr); gap:22px; padding-block:30px; border-bottom:1px solid var(--rule); align-items:start; }
+  .event:last-child { border-bottom:0; }
+  .event--flyered { grid-template-columns:minmax(0,1fr) minmax(0,270px); }
+  @media (max-width:720px){ .event--flyered { grid-template-columns:minmax(0,1fr); } }
+  .event h3 { font-family:"Newsreader", Georgia, serif; font-weight:600; font-size:clamp(1.2rem,3.6vw,1.45rem); line-height:1.25; color:var(--ink); margin:0 0 12px; text-wrap:balance; }
+  .event p { margin:0 0 14px; max-width:var(--measure); white-space:pre-line; overflow-wrap:break-word; }
+  .meta { margin:0; display:grid; gap:2px; border-left:3px solid var(--accent); padding:4px 0 4px 16px; }
+  .meta > div { display:grid; grid-template-columns:62px minmax(0,1fr); gap:10px; align-items:baseline; }
+  @media (max-width:480px){ .meta > div { grid-template-columns:minmax(0,1fr); gap:0; } }
+  .meta dt { font-size:11px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:var(--accent); padding-top:2px; }
+  .meta dd { margin:0; font-size:15.5px; font-weight:500; color:var(--ink); overflow-wrap:break-word; white-space:pre-line; }
+
+  .flyers { margin:0; display:flex; flex-wrap:wrap; gap:14px; }
+  .flyerbtn { padding:0; border:1px solid var(--rule); border-radius:2px; background:var(--surface); cursor:zoom-in; box-shadow:var(--shadow); line-height:0; max-width:100%; }
+  .flyerbtn img { display:block; width:100%; max-width:270px; height:auto; }
+  .flyers[data-n="2"] .flyerbtn img, .flyers[data-n="3"] .flyerbtn img { max-width:128px; }
+  @media (max-width:720px){ .flyerbtn img, .flyers[data-n="2"] .flyerbtn img, .flyers[data-n="3"] .flyerbtn img { max-width:230px; } }
+  .flyerlink { display:inline-block; font-size:14px; font-weight:600; }
+
+  .lb { position:fixed; inset:0; background:rgba(10,12,16,.92); display:none; align-items:center; justify-content:center; padding:16px; z-index:50; }
+  .lb[data-open="1"] { display:flex; }
+  .lb img { max-width:100%; max-height:92vh; object-fit:contain; border-radius:3px; }
+  .lb__close { position:absolute; top:calc(12px + env(safe-area-inset-top, 0px)); right:12px; background:#fff; color:#16243A; border:0; border-radius:999px; width:40px; height:40px; font-size:20px; font-weight:700; cursor:pointer; }
+
+  .state { padding-block:56px; text-align:center; color:var(--muted); font-size:15px; }
+  .state a { font-weight:600; }
+
+  .foot { background:var(--surface); border-top:1px solid var(--rule); padding-block:28px 36px; }
+  .foot p { margin:0 0 8px; font-size:14px; color:var(--muted); }
+
+  @media (prefers-reduced-motion: reduce){ *{ animation:none!important; transition:none!important; } }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead__inner">
+    <p class="eyebrow">Smithfield West Stake</p>
+    <h1>Weekly Announcements</h1>
+    <p class="masthead__week" id="weekline"></p>
+  </div>
+</header>
+
+<section class="upcoming" aria-labelledby="upcoming-h" id="upcoming" hidden>
+  <div class="wrap">
+    <div class="upcoming__head">
+      <h2 id="upcoming-h">Upcoming Events</h2>
+    </div>
+    <div class="agenda" id="agenda"></div>
+  </div>
+</section>
+
+<main id="sections"></main>
+
+<div class="state" id="state">Loading announcements&hellip;</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>Smithfield West Stake &middot; The Church of Jesus Christ of Latter-day Saints</p>
+    <p>Questions about an announcement? Contact the group that submitted it.</p>
+  </div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Flyer">
+  <button class="lb__close" id="lbclose" aria-label="Close flyer">&times;</button>
+  <img id="lbimg" alt="">
+</div>
+
+<script>
+/* ------------------------------------------------------------------
+   Data source: the Public tab of the response sheet, published to the
+   web as CSV. Nothing here is edited by hand -- change the sheet and
+   this page changes with it.
+-------------------------------------------------------------------*/
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSMFoLv44FnIFK2nZa6BrkokM3wO2l9mTYGfOUkY278PNQRV_RM5synTR6oIZ_yE2GjLaX1QMGgZN68/pub?gid=1466751929&single=true&output=csv";
+
+const SECTIONS = [
+  { name:"General Stake Announcements", key:"general", label:"General Stake Announcements", short:"General" },
+  { name:"Relief Society",              key:"relief",  label:"Relief Society Announcements", short:"Relief Society" },
+  { name:"Elders Quorum",               key:"eq",      label:"Elders Quorum Announcements",  short:"Elders Quorum" },
+  { name:"Youth and Parents",           key:"youth",   label:"Youth and Parent Announcements", short:"Youth" }
+];
+const BY_NAME = Object.fromEntries(SECTIONS.map(s => [s.name.toLowerCase(), s]));
+
+/* ---------- dates ---------- */
+const DOW = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const MONL = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const parseISO = s => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec((s||"").trim()); return m ? new Date(+m[1], +m[2]-1, +m[3]) : null; };
+const addDays = (x,n) => { const c = new Date(x); c.setDate(c.getDate()+n); return c; };
+const midnight = x => new Date(x.getFullYear(), x.getMonth(), x.getDate());
+const fmtShort = x => `${MON[x.getMonth()]} ${x.getDate()}`;
+const fmtLong  = x => `${DOW[x.getDay()]}, ${MON[x.getMonth()]} ${x.getDate()}, ${x.getFullYear()}`;
+const fmtWeek  = x => `${MONL[x.getMonth()]} ${x.getDate()}, ${x.getFullYear()}`;
+/* most recent Thursday on or before a date */
+const thursdayOf = x => addDays(midnight(x), -(((x.getDay() - 4) + 7) % 7));
+/* "4:00 PM" -> minutes since midnight, for sorting */
+function timeRank(t) {
+  const m = /^(\d{1,2}):(\d{2})\s*(AM|PM)$/i.exec((t||"").trim());
+  if (!m) return 9999;
+  let h = +m[1] % 12;
+  if (/pm/i.test(m[3])) h += 12;
+  return h * 60 + +m[2];
+}
+
+/* ---------- text ---------- */
+const esc = s => String(s == null ? "" : s)
+  .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+/* escape, then turn bare URLs into links (submitters paste sign-up links) */
+function richText(s) {
+  return esc(s).replace(/\bhttps?:\/\/[^\s<>()]+[^\s<>().,;:!?]/g,
+    u => `<a href="${u}" target="_blank" rel="noopener noreferrer">${u}</a>`);
+}
+
+/* ---------- Drive files ---------- */
+const driveId = u => {
+  const m = /[?&]id=([A-Za-z0-9_-]+)/.exec(u) || /\/d\/([A-Za-z0-9_-]+)/.exec(u);
+  return m ? m[1] : null;
+};
+const thumb = (id, w) =>
+  (window.FLYER_OVERRIDE && window.FLYER_OVERRIDE[id]) ||
+  `https://drive.google.com/thumbnail?id=${id}&sz=w${w}`;
+const viewUrl = id => `https://drive.google.com/file/d/${id}/view`;
+
+/* ---------- CSV ---------- */
+function parseCSV(text) {
+  const rows = [];
+  let row = [], field = "", q = false;
+  text = text.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) {
+      if (c === '"') { if (text[i+1] === '"') { field += '"'; i++; } else q = false; }
+      else field += c;
+    } else if (c === '"') q = true;
+    else if (c === ",") { row.push(field); field = ""; }
+    else if (c === "\n") { row.push(field); rows.push(row); row = []; field = ""; }
+    else field += c;
+  }
+  if (field.length || row.length) { row.push(field); rows.push(row); }
+  return rows;
+}
+
+function toRecords(text) {
+  const rows = parseCSV(text).filter(r => r.some(c => c.trim() !== ""));
+  if (!rows.length) return [];
+  const head = rows[0].map(h => h.trim().toLowerCase());
+  const at = name => head.indexOf(name);
+  const ix = {
+    section: at("section"), title: at("title"), summary: at("summary"),
+    date: at("event_date"), dates_text: at("dates_text"),
+    start: at("start_time"), end: at("end_time"), location: at("location"),
+    flyer: at("flyer")
+  };
+  return rows.slice(1).map(r => {
+    const get = k => (ix[k] >= 0 && r[ix[k]] != null) ? String(r[ix[k]]).trim() : "";
+    return {
+      section: get("section"), title: get("title"), summary: get("summary"),
+      date: get("date"), dates_text: get("dates_text"),
+      start: get("start"), end: get("end"), location: get("location"),
+      flyers: get("flyer").split(/[\s,]+/).map(driveId).filter(Boolean)
+    };
+  }).filter(r => r.title);
+}
+
+/* ---------- render ---------- */
+function render(all) {
+  const thu = thursdayOf(new Date());
+  const winEnd = addDays(thu, 10);          // through the second Sunday
+
+  document.getElementById("weekline").textContent = "Week of Thursday, " + fmtWeek(thu);
+
+  /* Every row the sheet publishes is shown. What appears here is decided
+     entirely by the Include checkbox in the response sheet -- nothing on
+     this page expires on its own. */
+  const active = all;
+
+  const stateEl = document.getElementById("state");
+  if (!active.length) {
+    stateEl.textContent = "No announcements this week.";
+    stateEl.hidden = false;
+    return;
+  }
+  stateEl.hidden = true;
+
+  /* --- Upcoming Events --- */
+  const dated = active.filter(r => parseISO(r.date));
+  const inWindow = dated.filter(r => { const x = parseISO(r.date); return x >= thu && x <= winEnd; })
+                        .sort((a,b) => a.date.localeCompare(b.date) || timeRank(a.start) - timeRank(b.start));
+  const later   = dated.filter(r => parseISO(r.date) > winEnd)
+                       .sort((a,b) => a.date.localeCompare(b.date));
+  /* undated announcements, plus any whose date has already passed, so that
+     every announcement on the page is still represented up here */
+  const ongoing = active.filter(r => { const x = parseISO(r.date); return !x || x < thu; })
+                        .sort((a,b) => (a.date||"").localeCompare(b.date||""));
+
+  const sectionOf = r => BY_NAME[(r.section||"").toLowerCase()] || SECTIONS[0];
+  const row = (dowText, dateText, r, meta) => {
+    const s = sectionOf(r);
+    return `
+    <div class="agenda__row" data-g="${s.key}">
+      <div class="agenda__date"><span class="dow">${esc(dowText)}</span>${esc(dateText)}</div>
+      <div>
+        <p class="agenda__title">${esc(r.title)}</p>
+        <p class="agenda__meta">${meta}<span class="agenda__group">${esc(s.short)}</span></p>
+      </div>
+    </div>`;
+  };
+  const metaOf = parts => { const t = parts.filter(Boolean).map(esc).join(" &middot; "); return t ? t + " &middot; " : ""; };
+
+  const agenda = document.getElementById("agenda");
+  let html = `<p class="agenda__subhead">10-Day Forecast</p>`;
+  html += inWindow.length
+    ? inWindow.map(r => { const x = parseISO(r.date);
+        return row(DOW[x.getDay()], fmtShort(x), r, metaOf([r.start, r.location])); }).join("")
+    : `<p class="agenda__empty">No dated events in the next 10 days.</p>`;
+  if (ongoing.length) {
+    html += `<p class="agenda__subhead">Ongoing</p>` +
+      ongoing.map(r => {
+        const x = parseISO(r.date);
+        return x
+          ? row(DOW[x.getDay()], fmtShort(x), r, metaOf([r.start, r.location]))
+          : row("Ongoing", "", r, metaOf([r.dates_text, r.location]));
+      }).join("");
+  }
+  if (later.length) {
+    html += `<p class="agenda__subhead">Coming later</p>` +
+      later.map(r => { const x = parseISO(r.date);
+        return row(DOW[x.getDay()], fmtShort(x), r, metaOf([r.start, r.location])); }).join("");
+  }
+  agenda.innerHTML = html;
+  document.getElementById("upcoming").hidden = false;
+
+  /* --- sections --- */
+  document.getElementById("sections").innerHTML = SECTIONS.map(s => {
+    const rows = active.filter(r => (r.section||"").toLowerCase() === s.name.toLowerCase());
+    if (!rows.length) return "";
+    const events = rows.map(r => {
+      const x = parseISO(r.date);
+      const time = [r.start, r.end].filter(Boolean).join(" – ");
+      const when = x ? fmtLong(x) + (time ? ` at ${esc(time)}` : "") : esc(r.dates_text);
+      const flyers = r.flyers.length ? `
+        <figure class="flyers" data-n="${r.flyers.length}">
+          ${r.flyers.map(id => `<button class="flyerbtn" data-full="${thumb(id,2000)}" data-view="${viewUrl(id)}" aria-label="Open flyer full screen"><img src="${thumb(id,900)}" alt="Flyer for ${esc(r.title)}" loading="lazy"></button>`).join("")}
+        </figure>` : "";
+      return `
+        <article class="event ${r.flyers.length ? "event--flyered" : ""}">
+          <div>
+            <h3>${esc(r.title)}</h3>
+            <p>${richText(r.summary)}</p>
+            <dl class="meta">
+              ${when ? `<div><dt>When</dt><dd>${when}</dd></div>` : ""}
+              ${r.dates_text && x ? `<div><dt>Dates</dt><dd>${esc(r.dates_text)}</dd></div>` : ""}
+              ${r.location ? `<div><dt>Where</dt><dd>${esc(r.location)}</dd></div>` : ""}
+            </dl>
+          </div>
+          ${flyers}
+        </article>`;
+    }).join("");
+    const count = rows.length === 1 ? "One announcement" : `${rows.length} announcements`;
+    return `
+      <section aria-label="${esc(s.label)}">
+        <div class="band band--${s.key}"><div class="wrap"><h2>${esc(s.label)}</h2><p>${count} this week</p></div></div>
+        <div class="wrap"><div class="events">${events}</div></div>
+      </section>`;
+  }).join("");
+}
+
+/* a flyer that will not render as an image becomes a plain link */
+document.addEventListener("error", e => {
+  const img = e.target;
+  if (!(img instanceof HTMLImageElement) || !img.closest(".flyerbtn")) return;
+  const btn = img.closest(".flyerbtn");
+  const a = document.createElement("a");
+  a.className = "flyerlink";
+  a.href = btn.dataset.view; a.target = "_blank"; a.rel = "noopener noreferrer";
+  a.textContent = "View flyer";
+  btn.replaceWith(a);
+}, true);
+
+/* lightbox */
+const lb = document.getElementById("lb"), lbimg = document.getElementById("lbimg");
+document.addEventListener("click", e => {
+  const b = e.target.closest(".flyerbtn");
+  if (b) { lbimg.src = b.dataset.full; lbimg.alt = b.querySelector("img").alt; lb.dataset.open = "1"; }
+  else if (e.target === lb || e.target.id === "lbclose") { lb.dataset.open = "0"; }
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape") lb.dataset.open = "0"; });
+
+/* load */
+(function start() {
+  if (typeof window.PRELOADED_CSV === "string") { render(toRecords(window.PRELOADED_CSV)); return; }
+  fetch(CSV_URL, { cache: "no-store" })
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(t => render(toRecords(t)))
+    .catch(() => {
+      document.getElementById("state").innerHTML =
+        "This week&rsquo;s announcements could not be loaded. Please refresh, or try again in a few minutes.";
+    });
+})();
+</script>
+</body>
+</html>
