@@ -96,7 +96,9 @@
   .events { padding-block:8px 40px; display:flex; flex-direction:column; }
   .event { display:grid; grid-template-columns:minmax(0,1fr); gap:22px; padding-block:30px; border-bottom:1px solid var(--rule); align-items:start; }
   .event:last-child { border-bottom:0; }
-  .event--flyered { grid-template-columns:minmax(0,1fr) minmax(0,270px); }
+  /* definite track width: a minmax(0,270px) track collapses to zero while the
+     flyer has no intrinsic size yet, which then stops the flyer ever loading */
+  .event--flyered { grid-template-columns:minmax(0,1fr) 270px; }
   @media (max-width:720px){ .event--flyered { grid-template-columns:minmax(0,1fr); } }
   .event h3 { font-family:"Newsreader", Georgia, serif; font-weight:600; font-size:clamp(1.2rem,3.6vw,1.45rem); line-height:1.25; color:var(--ink); margin:0 0 12px; text-wrap:balance; }
   .event p { margin:0 0 14px; max-width:var(--measure); white-space:pre-line; overflow-wrap:break-word; }
@@ -107,10 +109,10 @@
   .meta dd { margin:0; font-size:15.5px; font-weight:500; color:var(--ink); overflow-wrap:break-word; white-space:pre-line; }
 
   .flyers { margin:0; display:flex; flex-wrap:wrap; gap:14px; }
-  .flyerbtn { padding:0; border:1px solid var(--rule); border-radius:2px; background:var(--surface); cursor:zoom-in; box-shadow:var(--shadow); line-height:0; max-width:100%; }
-  .flyerbtn img { display:block; width:100%; max-width:270px; height:auto; }
-  .flyers[data-n="2"] .flyerbtn img, .flyers[data-n="3"] .flyerbtn img { max-width:128px; }
-  @media (max-width:720px){ .flyerbtn img, .flyers[data-n="2"] .flyerbtn img, .flyers[data-n="3"] .flyerbtn img { max-width:230px; } }
+  .flyerbtn { display:block; padding:0; border:1px solid var(--rule); border-radius:2px; background:var(--surface); cursor:zoom-in; box-shadow:var(--shadow); line-height:0; width:270px; max-width:100%; }
+  .flyerbtn img { display:block; width:100%; height:auto; min-height:2px; }
+  .flyers[data-n="2"] .flyerbtn, .flyers[data-n="3"] .flyerbtn { width:128px; }
+  @media (max-width:720px){ .flyerbtn, .flyers[data-n="2"] .flyerbtn, .flyers[data-n="3"] .flyerbtn { width:230px; } }
   .flyerlink { display:inline-block; font-size:14px; font-weight:600; }
 
   .lb { position:fixed; inset:0; background:rgba(10,12,16,.92); display:none; align-items:center; justify-content:center; padding:16px; z-index:50; }
@@ -338,7 +340,7 @@ function render(all) {
       const when = x ? fmtLong(x) + (time ? ` at ${esc(time)}` : "") : esc(r.dates_text);
       const flyers = r.flyers.length ? `
         <figure class="flyers" data-n="${r.flyers.length}">
-          ${r.flyers.map(id => `<button class="flyerbtn" data-full="${thumb(id,2000)}" data-view="${viewUrl(id)}" aria-label="Open flyer full screen"><img src="${thumb(id,900)}" alt="Flyer for ${esc(r.title)}" loading="lazy"></button>`).join("")}
+          ${r.flyers.map(id => `<button class="flyerbtn" data-full="${thumb(id,2000)}" data-view="${viewUrl(id)}" aria-label="Open flyer full screen"><img src="${thumb(id,900)}" alt="Flyer for ${esc(r.title)}"></button>`).join("")}
         </figure>` : "";
       return `
         <article class="event ${r.flyers.length ? "event--flyered" : ""}">
